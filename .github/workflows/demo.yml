@@ -6,6 +6,7 @@ on:
 
 env:
   DOCKER_REGISTRY: ghcr.io
+  K8S_NAMESPACE: demo
 
 jobs:
   push_to_registry:
@@ -45,6 +46,7 @@ jobs:
 
       - uses: azure/k8s-deploy@v1
         with:
+          namespace: ${{ env.K8S_NAMESPACE }}
           manifests: |
             kube/demo.yml
           images: |
