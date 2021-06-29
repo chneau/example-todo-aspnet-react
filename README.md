@@ -10,6 +10,7 @@ https://demo.porridgewithprotein.xyz/
 
 - https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetcore-5.0&tabs=visual-studio
 - https://create-react-app.dev/docs/getting-started/
+- File structure https://reactjs.org/docs/faq-structure.html
 
 ## dev logs graphql
 
