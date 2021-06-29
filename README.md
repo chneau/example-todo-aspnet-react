@@ -11,7 +11,14 @@ https://demo.porridgewithprotein.xyz/
 - https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetcore-5.0&tabs=visual-studio
 - https://create-react-app.dev/docs/getting-started/
 
-## dev logs
+## dev logs graphql
+
+```bash
+# https://chillicream.com/docs/hotchocolate/get-started/
+dotnet add Todo.Web package HotChocolate.AspNetCore
+```
+
+## dev logs setup
 
 ```bash
 # initialize c# project
