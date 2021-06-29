@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Todo.Web.Data;
+using Todo.Web.GraphQL;
 
 namespace Todo.Web
 {
@@ -28,7 +29,8 @@ namespace Todo.Web
 
             services
                 .AddGraphQLServer()
-                .AddQueryType<Query>();
+                .AddQueryType<Query>()
+                .AddMutationType<Mutation>();
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=todo.db"));
         }
@@ -51,11 +53,11 @@ namespace Todo.Web
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            app.UseRouting()
-                .UseEndpoints(endpoints => endpoints.MapGraphQL());
+            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGraphQL();
                 endpoints.MapControllerRoute(name: "default", pattern: "{controller}/{action=Index}/{id?}");
             });
 
