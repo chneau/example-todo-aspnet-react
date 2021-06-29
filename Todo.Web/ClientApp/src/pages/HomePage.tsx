@@ -2,7 +2,7 @@ import React from "react";
 import "./HomePage.css";
 import logo from "./logo.svg";
 
-export const App = () => (
+export const HomePage = () => (
   <div className="App">
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
