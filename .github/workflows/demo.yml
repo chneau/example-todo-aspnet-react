@@ -1,4 +1,4 @@
-name: CD react.porridgewithprotein.xyz
+name: CD demo.porridgewithprotein.xyz
 
 on:
   push:
