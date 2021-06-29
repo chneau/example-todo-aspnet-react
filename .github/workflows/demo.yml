@@ -30,11 +30,22 @@ jobs:
         with:
           context: .
           file: ./Todo.Web/Dockerfile
+          target: deps
+          push: true
+          tags: |
+            ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}:cache
+          cache-from: type=registry,ref=${{ env.DOCKER_REGISTRY }}/${{ github.repository }}:cache
+          cache-to: type=inline
+
+      - uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Todo.Web/Dockerfile
           push: true
           tags: |
             ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}:${{ github.sha }}
             ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}:latest
-          cache-from: type=registry,ref=${{ env.DOCKER_REGISTRY }}/${{ github.repository }}:latest
+          cache-from: type=registry,ref=${{ env.DOCKER_REGISTRY }}/${{ github.repository }}:cache
           cache-to: type=inline
 
   deploy_to_k8s:
