@@ -22,6 +22,13 @@ dotnet add Todo.Web package HotChocolate.AspNetCore
 
 # https://github.com/ChilliCream/graphql-workshop/blob/master/docs/1-creating-a-graphql-server-project.md
 dotnet add Todo.Web package Microsoft.EntityFrameworkCore.Sqlite
+
+dotnet tool install dotnet-ef --global
+
+# close dotnet watch run
+dotnet add Todo.Web package Microsoft.EntityFrameworkCore.Design
+dotnet ef migrations add Initial --project Todo.Web
+dotnet ef database update --project Todo.Web
 ```
 
 ## dev logs setup
