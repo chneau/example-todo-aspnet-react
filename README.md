@@ -46,6 +46,9 @@ dotnet publish -o publish
 # It compiles your C#
 # It "compiles" your React (down to a few js and css files)
 # Running Todo.Web.exe just works and is instant, no nodejs on the server
+
+# push other branch to current head ?
+git push origin master:demo
 ```
 
 ## Docker build
