@@ -1,9 +1,14 @@
 import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+
+const HeaderNavbar = styled(Navbar)`
+  user-select: none;
+`;
 
 export const Header = () => (
-  <Navbar bg="light" expand="lg">
+  <HeaderNavbar bg="light" expand="lg">
     <Navbar.Brand>Todo App</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
@@ -11,13 +16,16 @@ export const Header = () => (
         <NavLink exact to="/" className="nav-link" activeClassName="active">
           Home
         </NavLink>
-        <NavLink exact to="/service" className="nav-link" activeClassName="active">
+        <NavLink to="/service" className="nav-link" activeClassName="active">
           Service
         </NavLink>
-        <NavLink exact to="/about" className="nav-link" activeClassName="active">
+        <NavLink to="/about" className="nav-link" activeClassName="active">
           About
+        </NavLink>
+        <NavLink to="/graphql" target="_blank" className="nav-link" activeClassName="active">
+          GraphQL
         </NavLink>
       </Nav>
     </Navbar.Collapse>
-  </Navbar>
+  </HeaderNavbar>
 );
