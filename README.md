@@ -2,6 +2,11 @@
 
 This is a work in progress example.
 
+## context
+
+- https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetcore-5.0&tabs=visual-studio
+- https://create-react-app.dev/docs/getting-started/
+
 ## dev logs
 
 ```bash
@@ -34,4 +39,11 @@ npm install
 # https://create-react-app.dev/docs/getting-started/
 # You don’t need to install or configure tools like webpack or Babel. They are preconfigured and hidden so that you can focus on the code.
 # Create a project, and you’re good to go.
+
+# How to make it work in a server?
+dotnet publish -o publish
+
+# It compiles your C#
+# It "compiles" your React (down to a few js and css files)
+# Running Todo.Web.exe just works and is instant, no nodejs on the server
 ```
