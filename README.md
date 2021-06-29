@@ -12,12 +12,16 @@ https://demo.porridgewithprotein.xyz/
 - https://create-react-app.dev/docs/getting-started/
 - File structure https://reactjs.org/docs/faq-structure.html
 - https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets `rafc`
+- https://github.com/ChilliCream/graphql-workshop/blob/master/docs/1-creating-a-graphql-server-project.md
 
 ## dev logs graphql
 
 ```bash
 # https://chillicream.com/docs/hotchocolate/get-started/
 dotnet add Todo.Web package HotChocolate.AspNetCore
+
+# https://github.com/ChilliCream/graphql-workshop/blob/master/docs/1-creating-a-graphql-server-project.md
+dotnet add Todo.Web package Microsoft.EntityFrameworkCore.Sqlite
 ```
 
 ## dev logs setup

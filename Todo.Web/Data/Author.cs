@@ -1,4 +1,4 @@
-namespace Todo.Web.GraphQL
+namespace Todo.Web.Data
 {
     public class Author
     {
