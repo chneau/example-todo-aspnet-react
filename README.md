@@ -8,11 +8,12 @@ https://demo.porridgewithprotein.xyz/
 
 ## context
 
-- https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetcore-5.0&tabs=visual-studio
-- https://create-react-app.dev/docs/getting-started/
+- How this project is there: https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetcore-5.0&tabs=visual-studio
+- Create the react app the easy way https://create-react-app.dev/docs/getting-started/
 - File structure https://reactjs.org/docs/faq-structure.html
-- https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets `rafc`
-- https://github.com/ChilliCream/graphql-workshop/blob/master/docs/1-creating-a-graphql-server-project.md
+- `rafc` snippet and other https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets
+- Very good sessions to get graphql serverside / clientside right https://github.com/ChilliCream/graphql-workshop/blob/master/docs/1-creating-a-graphql-server-project.md
+- Getting graphql clientside (~React) right https://www.apollographql.com/docs/react/get-started/
 
 ## dev logs graphql
 
@@ -47,6 +48,14 @@ query GetTodoItemsDescriptions {
     description
   }
 }
+
+# to test on https://localhost:5001/graphql/
+```
+
+```bash
+# installing the graphql on react
+npm install @apollo/client graphql
+
 ```
 
 ## dev logs setup
