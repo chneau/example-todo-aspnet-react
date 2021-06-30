@@ -7,25 +7,31 @@ const HeaderNavbar = styled(Navbar)`
   user-select: none;
 `;
 
-export const Header = () => (
-  <HeaderNavbar bg="light" expand="lg">
-    <Navbar.Brand>Todo App</Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="mr-auto">
-        <NavLink exact to="/" className="nav-link" activeClassName="active">
-          Home
-        </NavLink>
-        <NavLink to="/service" className="nav-link" activeClassName="active">
-          Service
-        </NavLink>
-        <NavLink to="/about" className="nav-link" activeClassName="active">
-          About
-        </NavLink>
-        <NavLink to="/graphql" target="_blank" className="nav-link" activeClassName="active">
-          GraphQL
-        </NavLink>
-      </Nav>
-    </Navbar.Collapse>
-  </HeaderNavbar>
-);
+export const Header = () => {
+  const commonProps = { className: "nav-link", activeClassName: "active" };
+  return (
+    <HeaderNavbar bg="light" expand="lg">
+      <Navbar.Brand>Todo App</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <NavLink exact to="/" {...commonProps}>
+            Home
+          </NavLink>
+          <NavLink to="/service" {...commonProps}>
+            Service
+          </NavLink>
+          <NavLink to="/about" {...commonProps}>
+            About
+          </NavLink>
+          <NavLink to="/testing" {...commonProps}>
+            Testing
+          </NavLink>
+          <NavLink to="/graphql" target="_blank" {...commonProps}>
+            GraphQL
+          </NavLink>
+        </Nav>
+      </Navbar.Collapse>
+    </HeaderNavbar>
+  );
+};

@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Header } from "./components/Header";
 import { HomePage } from "./pages/HomePage";
+import { TestingPage } from "./pages/TestingPage";
 import { reportWebVitals } from "./reportWebVitals";
 
 ReactDOM.render(
@@ -12,6 +13,7 @@ ReactDOM.render(
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/testing" component={TestingPage} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,
