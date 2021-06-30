@@ -1,4 +1,5 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { ApolloClient, ApolloProvider, from, HttpLink, InMemoryCache } from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -8,9 +9,15 @@ import { HomePage } from "./pages/HomePage";
 import { TestingPage } from "./pages/TestingPage";
 import { reportWebVitals } from "./reportWebVitals";
 
+// Log any GraphQL errors or network error that occurred
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors) graphQLErrors.map(({ message, locations, path }) => console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`));
+  if (networkError) console.log(`[Network error]: ${networkError}`);
+});
+
 const client = new ApolloClient({
-  uri: "/graphql",
   cache: new InMemoryCache(),
+  link: from([errorLink, new HttpLink({ uri: "/graphql" })]),
 });
 
 ReactDOM.render(

@@ -1,6 +1,7 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
+import faker from "faker";
 import React from "react";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 
 interface TodoItem {
   id: string;
@@ -11,7 +12,7 @@ interface TodoItemData {
 }
 
 export const TestingPage = () => {
-  const { loading, data } = useQuery<TodoItemData>(gql`
+  let { loading, data } = useQuery<TodoItemData>(gql`
     query GetTodoItemsDescriptions {
       todoItems {
         id
@@ -20,32 +21,39 @@ export const TestingPage = () => {
     }
   `);
 
+  const [addRandomTodo] = useMutation(gql`
+    mutation AddTodoItem($description: String!) {
+      addTodoItem(input: { description: $description }) {
+        todoItem {
+          id
+        }
+      }
+    }
+  `);
+
   if (loading) {
     return <div>Loading ...</div>;
   }
 
-  if (data == null) {
-    return <div>No data found ...</div>;
-  }
-
-  console.log(data.todoItems);
-
   return (
-    <Table striped bordered hover size="sm">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.todoItems.map((x) => (
+    <>
+      <Button onClick={() => addRandomTodo({ variables: { description: faker.lorem.words(5) } })}>Add Random</Button>
+      <Table striped bordered hover size="sm">
+        <thead>
           <tr>
-            <td>{x.id}</td>
-            <td>{x.description}</td>
+            <th>ID</th>
+            <th>Description</th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {data?.todoItems.map((x) => (
+            <tr key={x.id}>
+              <td>{x.id}</td>
+              <td>{x.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </>
   );
 };
