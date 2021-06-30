@@ -8,12 +8,11 @@ namespace Todo.Web.Data
         public Guid Id { get; set; }
 
         [Required]
-        [StringLength(200)]
-        public string Description { get; set; }
+        [StringLength(100)]
+        public string? Description { get; set; }
 
         public DateTime? Done { get; set; }
 
-        [Required]
-        public Author Author { get; set; }
+        public Author? Author { get; set; }
     }
 }

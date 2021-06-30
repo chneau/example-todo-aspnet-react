@@ -15,7 +15,14 @@ https://demo.porridgewithprotein.xyz/
 - Very good sessions to get graphql serverside / clientside right https://github.com/ChilliCream/graphql-workshop/blob/master/docs/1-creating-a-graphql-server-project.md
 - Getting graphql clientside (~React) right https://www.apollographql.com/docs/react/get-started/
 
-## dev logs graphql
+## dev logs graphql part 2
+
+```bash
+# https://github.com/ChilliCream/graphql-workshop/blob/master/docs/2-controlling-nullability.md
+
+```
+
+## dev logs graphql part 1
 
 ```bash
 # https://chillicream.com/docs/hotchocolate/get-started/

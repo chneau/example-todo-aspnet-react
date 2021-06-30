@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Todo.Web.Data
 {
@@ -6,6 +7,8 @@ namespace Todo.Web.Data
     {
         public Guid Id { get; set; }
 
-        public string Name { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string? Name { get; set; }
     }
 }
