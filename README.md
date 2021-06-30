@@ -56,6 +56,8 @@ query GetTodoItemsDescriptions {
 # installing the graphql on react
 npm install @apollo/client graphql
 
+# It will be important to have the typescript interfaces so that the graphql are typed easily `useQuery<TodoItemData>`.
+# It could be nice to have all the gql centralised (api folder?) so that it's easy to unit test all off them.
 ```
 
 ## dev logs setup
