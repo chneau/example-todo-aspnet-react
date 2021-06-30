@@ -31,6 +31,24 @@ dotnet ef migrations add Initial --project Todo.Web
 dotnet ef database update --project Todo.Web
 ```
 
+```graphql
+# This is to add a TodoItem
+# `AddTodoItem` does look like to just be a label (it can be anything)
+mutation AddTodoItem {
+  addTodoItem(input: { description: "Buy easy peeler oranges" }) {
+    todoItem {
+      id
+    }
+  }
+}
+# this is to get TodoItems
+query GetTodoItemsDescriptions {
+  todoItems {
+    description
+  }
+}
+```
+
 ## dev logs setup
 
 ```bash
