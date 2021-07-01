@@ -27,10 +27,10 @@ export const Header = () => {
           <NavLink to="/testing" {...commonProps}>
             Testing
           </NavLink>
-          <NavLink to="/graphql" target="_blank" {...commonProps}>
+          <NavLink to="/iframe/graphql" {...commonProps}>
             GraphQL
           </NavLink>
-          <NavLink to="/profiler/results-index" target="_blank" {...commonProps}>
+          <NavLink to="/iframe/profiler" {...commonProps}>
             MiniProfiler
           </NavLink>
         </Nav>
