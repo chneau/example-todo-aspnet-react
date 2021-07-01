@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Todo.Web.Data;
 using Todo.Web.GraphQL;
+using Todo.Web.GraphQL.Books;
 using Todo.Web.GraphQL.GraphQL.Extensions;
 using Todo.Web.GraphQL.TodoItems;
 
@@ -34,11 +35,15 @@ namespace Todo.Web
                 .AddGraphQLServer()
                 .AddQueryType(d => d.Name("Query"))
                     .AddTypeExtension<TodoItemQueries>()
+                    .AddTypeExtension<BookQueries>()
                 .AddMutationType(d => d.Name("Mutation"))
                     .AddTypeExtension<TodoItemMutations>()
+                    .AddTypeExtension<BookMutations>()
                 .AddType<TodoItemType>()
+                .AddType<BookType>()
                 .EnableRelaySupport()
                 .AddDataLoader<TodoItemByIdDataLoader>()
+                .AddDataLoader<BookByIdDataLoader>()
                 .AddDiagnosticEventListener(sp => new ConsoleQueryLogger(sp.GetApplicationService<ILogger<ConsoleQueryLogger>>()))
                 .AddDiagnosticEventListener(sp => new MiniProfilerQueryLogger());
 
