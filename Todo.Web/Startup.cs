@@ -31,7 +31,7 @@ namespace Todo.Web
             services
                 .AddGraphQLServer()
                 .AddQueryType(d => d.Name("Query"))
-                    .AddTypeExtension<SpeakerQueries>()
+                    .AddTypeExtension<TodoItemQueries>()
                 .AddMutationType(d => d.Name("Mutation"))
                     .AddTypeExtension<TodoItemMutations>()
                 .AddType<TodoItemType>()

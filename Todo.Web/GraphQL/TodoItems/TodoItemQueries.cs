@@ -12,7 +12,7 @@ using Todo.Web.GraphQL.GraphQL.Extensions;
 namespace Todo.Web.GraphQL.TodoItems
 {
     [ExtendObjectType("Query")]
-    public class SpeakerQueries
+    public class TodoItemQueries
     {
         [UseApplicationDbContext]
         public Task<List<TodoItem>> GetTodoItems([ScopedService] ApplicationDbContext context) =>
