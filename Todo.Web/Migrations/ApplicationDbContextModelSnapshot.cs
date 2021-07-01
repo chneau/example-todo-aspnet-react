@@ -16,7 +16,38 @@ namespace Todo.Web.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.7");
 
+            modelBuilder.Entity("BookTodoItem", b =>
+                {
+                    b.Property<Guid>("BooksId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("TodoItemsId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("BooksId", "TodoItemsId");
+
+                    b.HasIndex("TodoItemsId");
+
+                    b.ToTable("BookTodoItem");
+                });
+
             modelBuilder.Entity("Todo.Web.Data.Author", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Authors");
+                });
+
+            modelBuilder.Entity("Todo.Web.Data.Book", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -27,7 +58,7 @@ namespace Todo.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Author");
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("Todo.Web.Data.TodoItem", b =>
@@ -41,7 +72,7 @@ namespace Todo.Web.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(200)
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("Done")
@@ -52,6 +83,21 @@ namespace Todo.Web.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("TodoItems");
+                });
+
+            modelBuilder.Entity("BookTodoItem", b =>
+                {
+                    b.HasOne("Todo.Web.Data.Book", null)
+                        .WithMany()
+                        .HasForeignKey("BooksId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Todo.Web.Data.TodoItem", null)
+                        .WithMany()
+                        .HasForeignKey("TodoItemsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Todo.Web.Data.TodoItem", b =>
