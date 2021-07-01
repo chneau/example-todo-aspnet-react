@@ -19,6 +19,8 @@ https://demo.porridgewithprotein.xyz/
 
 ```bash
 # https://github.com/ChilliCream/graphql-workshop/blob/master/docs/3-understanding-dataLoader.md
+dotnet ef migrations add Refactoring
+dotnet ef database update
 ```
 
 ```gql
@@ -39,6 +41,16 @@ query GetTodoItemsDescriptonsInParallel {
     description
   }
   c: todoItems {
+    id
+    description
+  }
+}
+query GetSpecificTodoItemById {
+  a: todoItem(id: "3fb9af1f50d143af8832596123994c0b") {
+    id
+    description
+  }
+  b: todoItem(id: "482d3058c16146d0b4800534cad96d43") {
     id
     description
   }

@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Todo.Web.Data;
 using Todo.Web.GraphQL;
+using Todo.Web.GraphQL.DataLoaders;
 
 namespace Todo.Web
 {
@@ -31,7 +32,8 @@ namespace Todo.Web
             services
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
-                .AddMutationType<Mutation>();
+                .AddMutationType<Mutation>()
+                .AddDataLoader<TodoItemByIdDataLoader>();
 
             services.AddPooledDbContextFactory<ApplicationDbContext>(options => options.UseSqlite("Data Source=todo.db"));
         }
