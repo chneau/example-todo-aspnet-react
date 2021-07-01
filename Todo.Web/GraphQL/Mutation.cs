@@ -14,6 +14,7 @@ namespace Todo.Web.GraphQL
             {
                 Description = input.Description,
                 Author = input.Author,
+                Books = input.Books,
             };
 
             context.TodoItems.Add(speaker);
