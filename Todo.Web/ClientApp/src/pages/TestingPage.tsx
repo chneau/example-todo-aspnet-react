@@ -31,9 +31,9 @@ export const TestingPage = () => {
     }
   `);
 
-  const addRandomTodoAndFetchMore = () => {
-    addRandomTodo({ variables: { description: faker.lorem.words(5) } });
-    refetch();
+  const addRandomTodoAndFetchMore = async () => {
+    await addRandomTodo({ variables: { description: faker.lorem.words(5) } });
+    await refetch();
   };
 
   if (loading) {
