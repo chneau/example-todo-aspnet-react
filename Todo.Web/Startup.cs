@@ -33,7 +33,7 @@ namespace Todo.Web
                 .AddQueryType<Query>()
                 .AddMutationType<Mutation>();
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=todo.db"));
+            services.AddPooledDbContextFactory<ApplicationDbContext>(options => options.UseSqlite("Data Source=todo.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

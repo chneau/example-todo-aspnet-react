@@ -15,11 +15,40 @@ https://demo.porridgewithprotein.xyz/
 - Very good sessions to get graphql serverside / clientside right https://github.com/ChilliCream/graphql-workshop/blob/master/docs/1-creating-a-graphql-server-project.md
 - Getting graphql clientside (~React) right https://www.apollographql.com/docs/react/get-started/
 
+## dev logs graphql part 3
+
+```bash
+# https://github.com/ChilliCream/graphql-workshop/blob/master/docs/3-understanding-dataLoader.md
+```
+
+```gql
+# normal query
+query GetTodoItemsDescriptions {
+  todoItems {
+    description
+  }
+}
+# parrallel
+query GetTodoItemsDescriptonsInParallel {
+  a: todoItems {
+    id
+    description
+  }
+  b: todoItems {
+    id
+    description
+  }
+  c: todoItems {
+    id
+    description
+  }
+}
+```
+
 ## dev logs graphql part 2
 
 ```bash
 # https://github.com/ChilliCream/graphql-workshop/blob/master/docs/2-controlling-nullability.md
-
 ```
 
 ## dev logs graphql part 1

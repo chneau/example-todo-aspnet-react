@@ -15,7 +15,9 @@ namespace Todo.Web
 
             using (var scope = host.Services.CreateScope())
             {
-                var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                var contextFactory = scope.ServiceProvider.GetRequiredService<IDbContextFactory<ApplicationDbContext>>();
+                var context = contextFactory.CreateDbContext();
+
                 context.Database.Migrate();
             }
 

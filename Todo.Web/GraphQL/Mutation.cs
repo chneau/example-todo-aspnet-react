@@ -1,12 +1,14 @@
 using System.Threading.Tasks;
 using HotChocolate;
 using Todo.Web.Data;
+using Todo.Web.GraphQL.GraphQL.Extensions;
 
 namespace Todo.Web.GraphQL
 {
     public class Mutation
     {
-        public async Task<AddTodoItemPayload> AddTodoItemAsync(AddTodoItemInput input, [Service] ApplicationDbContext context)
+        [UseApplicationDbContext]
+        public async Task<AddTodoItemPayload> AddTodoItemAsync(AddTodoItemInput input, [ScopedService] ApplicationDbContext context)
         {
             var speaker = new TodoItem
             {
