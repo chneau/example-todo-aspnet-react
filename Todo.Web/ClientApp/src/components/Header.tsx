@@ -30,6 +30,9 @@ export const Header = () => {
           <NavLink to="/graphql" target="_blank" {...commonProps}>
             GraphQL
           </NavLink>
+          <NavLink to="/profiler/results-index" target="_blank" {...commonProps}>
+            MiniProfiler
+          </NavLink>
         </Nav>
       </Navbar.Collapse>
     </HeaderNavbar>

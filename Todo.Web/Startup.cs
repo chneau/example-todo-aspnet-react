@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Todo.Web.Data;
 using Todo.Web.GraphQL;
+using Todo.Web.GraphQL.GraphQL.Extensions;
 using Todo.Web.GraphQL.TodoItems;
 
 namespace Todo.Web
@@ -36,7 +37,12 @@ namespace Todo.Web
                     .AddTypeExtension<TodoItemMutations>()
                 .AddType<TodoItemType>()
                 .EnableRelaySupport()
-                .AddDataLoader<TodoItemByIdDataLoader>();
+                .AddDataLoader<TodoItemByIdDataLoader>()
+                .AddDiagnosticEventListener(sp => new MiniProfilerQueryLogger());
+
+            services
+                .AddMiniProfiler(options => options.RouteBasePath = "/profiler")
+                .AddEntityFramework();
 
             services.AddPooledDbContextFactory<ApplicationDbContext>(options => options.UseSqlite("Data Source=todo.db"));
         }
@@ -60,6 +66,7 @@ namespace Todo.Web
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+            app.UseMiniProfiler();
 
             app.UseEndpoints(endpoints =>
             {
