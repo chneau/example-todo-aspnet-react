@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Todo.Web.Data;
 using Todo.Web.GraphQL;
 using Todo.Web.GraphQL.GraphQL.Extensions;
@@ -38,6 +39,7 @@ namespace Todo.Web
                 .AddType<TodoItemType>()
                 .EnableRelaySupport()
                 .AddDataLoader<TodoItemByIdDataLoader>()
+                .AddDiagnosticEventListener(sp => new ConsoleQueryLogger(sp.GetApplicationService<ILogger<ConsoleQueryLogger>>()))
                 .AddDiagnosticEventListener(sp => new MiniProfilerQueryLogger());
 
             services

@@ -18,12 +18,6 @@ export const Header = () => {
           <NavLink exact to="/" {...commonProps}>
             Home
           </NavLink>
-          <NavLink to="/service" {...commonProps}>
-            Service
-          </NavLink>
-          <NavLink to="/about" {...commonProps}>
-            About
-          </NavLink>
           <NavLink to="/testing" {...commonProps}>
             Testing
           </NavLink>
