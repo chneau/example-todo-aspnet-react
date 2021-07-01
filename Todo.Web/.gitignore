@@ -232,3 +232,5 @@ _Pvt_Extensions
 .fake/
 
 *.db
+*.db-shm
+*.db-wal
