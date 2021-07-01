@@ -14,8 +14,8 @@ namespace Todo.Web.Data
 
         public DateTime? Done { get; set; }
 
-        public Author? Author { get; set; }
+        public virtual Author? Author { get; set; }
 
-        public List<Book>? Books { get; set; } = new();
+        public virtual List<Book> Books { get; set; } = new();
     }
 }

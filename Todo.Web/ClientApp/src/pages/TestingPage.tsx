@@ -12,7 +12,7 @@ interface TodoItemData {
 }
 
 export const TestingPage = () => {
-  let { loading, data } = useQuery<TodoItemData>(gql`
+  let { loading, data, refetch } = useQuery<TodoItemData>(gql`
     query GetTodoItemsDescriptions {
       todoItems {
         id
@@ -31,13 +31,18 @@ export const TestingPage = () => {
     }
   `);
 
+  const addRandomTodoAndFetchMore = () => {
+    addRandomTodo({ variables: { description: faker.lorem.words(5) } });
+    refetch();
+  };
+
   if (loading) {
     return <div>Loading ...</div>;
   }
 
   return (
     <>
-      <Button onClick={() => addRandomTodo({ variables: { description: faker.lorem.words(5) } })}>Add Random</Button>
+      <Button onClick={addRandomTodoAndFetchMore}>Add Random</Button>
       <Table striped bordered hover size="sm">
         <thead>
           <tr>

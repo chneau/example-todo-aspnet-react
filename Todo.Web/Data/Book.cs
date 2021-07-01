@@ -10,6 +10,6 @@ namespace Todo.Web.Data
 
         public string? Name { get; set; }
 
-        public List<TodoItem>? TodoItems { get; set; } = new();
+        public virtual List<TodoItem> TodoItems { get; set; } = new();
     }
 }

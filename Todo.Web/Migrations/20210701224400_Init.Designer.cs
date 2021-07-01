@@ -9,7 +9,7 @@ using Todo.Web.Data;
 namespace Todo.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210701191146_Init")]
+    [Migration("20210701224400_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
