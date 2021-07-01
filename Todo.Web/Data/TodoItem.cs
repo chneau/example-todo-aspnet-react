@@ -16,6 +16,6 @@ namespace Todo.Web.Data
 
         public Author? Author { get; set; }
 
-        public List<Book> Books { get; set; } = new();
+        public List<Book>? Books { get; set; } = new();
     }
 }

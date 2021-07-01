@@ -31,8 +31,12 @@ namespace Todo.Web
 
             services
                 .AddGraphQLServer()
-                .AddQueryType<Query>()
-                .AddMutationType<Mutation>()
+                .AddQueryType(d => d.Name("Query"))
+                    .AddTypeExtension<SpeakerQueries>()
+                .AddMutationType(d => d.Name("Mutation"))
+                    .AddTypeExtension<TodoItemMutations>()
+                .AddType<TodoItemType>()
+                .EnableRelaySupport()
                 .AddDataLoader<TodoItemByIdDataLoader>();
 
             services.AddPooledDbContextFactory<ApplicationDbContext>(options => options.UseSqlite("Data Source=todo.db"));
