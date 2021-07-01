@@ -1,4 +1,3 @@
-using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -8,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Todo.Web.Data;
 using Todo.Web.GraphQL;
-using Todo.Web.GraphQL.DataLoaders;
+using Todo.Web.GraphQL.TodoItems;
 
 namespace Todo.Web
 {

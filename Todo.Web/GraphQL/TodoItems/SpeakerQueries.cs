@@ -7,10 +7,9 @@ using HotChocolate.Types;
 using HotChocolate.Types.Relay;
 using Microsoft.EntityFrameworkCore;
 using Todo.Web.Data;
-using Todo.Web.GraphQL.DataLoaders;
 using Todo.Web.GraphQL.GraphQL.Extensions;
 
-namespace Todo.Web.GraphQL
+namespace Todo.Web.GraphQL.TodoItems
 {
     [ExtendObjectType("Query")]
     public class SpeakerQueries

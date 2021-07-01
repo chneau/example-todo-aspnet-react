@@ -1,9 +1,8 @@
 using HotChocolate.Resolvers;
 using HotChocolate.Types;
 using Todo.Web.Data;
-using Todo.Web.GraphQL.DataLoaders;
 
-namespace Todo.Web.GraphQL
+namespace Todo.Web.GraphQL.TodoItems
 {
     public class TodoItemType : ObjectType<TodoItem>
     {

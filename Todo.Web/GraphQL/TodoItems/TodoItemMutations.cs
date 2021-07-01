@@ -1,13 +1,11 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using HotChocolate;
 using HotChocolate.Types;
-using Microsoft.EntityFrameworkCore;
 using Todo.Web.Data;
 using Todo.Web.GraphQL.GraphQL.Extensions;
 
-namespace Todo.Web.GraphQL
+namespace Todo.Web.GraphQL.TodoItems
 {
     public record AddTodoItemInput(string Description, Author? Author, List<Book>? Books);
 

@@ -8,7 +8,7 @@ using Todo.Web.Data;
 using GreenDonut;
 using HotChocolate.DataLoader;
 
-namespace Todo.Web.GraphQL.DataLoaders
+namespace Todo.Web.GraphQL.TodoItems
 {
     public class TodoItemByIdDataLoader : BatchDataLoader<Guid, TodoItem>
     {

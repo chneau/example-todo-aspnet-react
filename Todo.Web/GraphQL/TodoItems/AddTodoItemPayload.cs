@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Todo.Web.Data;
 using Todo.Web.GraphQL.Common;
 
-namespace Todo.Web.GraphQL
+namespace Todo.Web.GraphQL.TodoItems
 {
     public class AddTodoItemPayload : TodoItemPayloadBase
     {
