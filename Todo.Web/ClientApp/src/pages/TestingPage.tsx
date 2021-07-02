@@ -6,6 +6,7 @@ import { Button, Table } from "react-bootstrap";
 interface TodoItem {
   id: string;
   description: string;
+  createdAt: Date;
 }
 interface Node {
   nodes: TodoItem[];
@@ -17,10 +18,11 @@ interface TodoItemData {
 export const TestingPage = () => {
   let { loading, data, refetch } = useQuery<TodoItemData>(gql`
     query GetTodoItemsDescriptions {
-      todoItems {
+      todoItems(order: { createdAt: DESC }, first: 5) {
         nodes {
           id
           description
+          createdAt
         }
       }
     }
@@ -53,6 +55,7 @@ export const TestingPage = () => {
           <tr>
             <th>ID</th>
             <th>Description</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>
@@ -60,6 +63,7 @@ export const TestingPage = () => {
             <tr key={x.id}>
               <td>{x.id}</td>
               <td>{x.description}</td>
+              <td>{x.createdAt}</td>
             </tr>
           ))}
         </tbody>

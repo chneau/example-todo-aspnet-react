@@ -37,6 +37,7 @@ namespace Todo.Web.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Done = table.Column<DateTime>(type: "TEXT", nullable: true),
                     AuthorId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },

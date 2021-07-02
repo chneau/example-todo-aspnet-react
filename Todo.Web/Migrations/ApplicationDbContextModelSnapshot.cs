@@ -70,6 +70,9 @@ namespace Todo.Web.Migrations
                     b.Property<Guid?>("AuthorId")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(100)

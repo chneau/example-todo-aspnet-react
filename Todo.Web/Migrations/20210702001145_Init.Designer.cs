@@ -9,7 +9,7 @@ using Todo.Web.Data;
 namespace Todo.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210701224400_Init")]
+    [Migration("20210702001145_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,6 +70,9 @@ namespace Todo.Web.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<Guid?>("AuthorId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")

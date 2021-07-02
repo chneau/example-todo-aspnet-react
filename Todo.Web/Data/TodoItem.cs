@@ -12,6 +12,8 @@ namespace Todo.Web.Data
         [StringLength(100)]
         public string? Description { get; set; }
 
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
         public DateTime? Done { get; set; }
 
         public virtual Author? Author { get; set; }
