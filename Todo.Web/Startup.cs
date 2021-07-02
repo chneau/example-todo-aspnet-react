@@ -46,6 +46,8 @@ namespace Todo.Web
                 .AddType<BookType>()
                 .AddType<AuthorType>()
                 .EnableRelaySupport()
+                .AddFiltering()
+                .AddSorting()
                 .AddDataLoader<TodoItemByIdDataLoader>()
                 .AddDataLoader<BookByIdDataLoader>()
                 .AddDataLoader<AuthorByIdDataLoader>()

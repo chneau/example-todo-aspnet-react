@@ -7,16 +7,21 @@ interface TodoItem {
   id: string;
   description: string;
 }
+interface Node {
+  nodes: TodoItem[];
+}
 interface TodoItemData {
-  todoItems: TodoItem[];
+  todoItems: Node;
 }
 
 export const TestingPage = () => {
   let { loading, data, refetch } = useQuery<TodoItemData>(gql`
     query GetTodoItemsDescriptions {
       todoItems {
-        id
-        description
+        nodes {
+          id
+          description
+        }
       }
     }
   `);
@@ -51,7 +56,7 @@ export const TestingPage = () => {
           </tr>
         </thead>
         <tbody>
-          {data?.todoItems.map((x) => (
+          {data?.todoItems.nodes.map((x) => (
             <tr key={x.id}>
               <td>{x.id}</td>
               <td>{x.description}</td>
