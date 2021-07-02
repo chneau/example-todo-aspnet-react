@@ -14,6 +14,7 @@ https://demo.porridgewithprotein.xyz/
 - `rafc` snippet and other https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets
 - Very good sessions to get graphql serverside / clientside right https://github.com/ChilliCream/graphql-workshop/blob/master/docs/1-creating-a-graphql-server-project.md
 - Getting graphql clientside (~React) right https://www.apollographql.com/docs/react/get-started/
+- Real time react https://www.howtographql.com/react-apollo/8-subscriptions/
 
 ## dev logs graphql part 3
 
