@@ -50,6 +50,7 @@ namespace Todo.Web
                 .EnableRelaySupport()
                 .AddFiltering()
                 .AddSorting()
+                .AddProjections()
                 .AddInMemorySubscriptions()
                 .AddDataLoader<TodoItemByIdDataLoader>()
                 .AddDataLoader<BookByIdDataLoader>()

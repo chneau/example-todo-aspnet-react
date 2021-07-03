@@ -18,6 +18,7 @@ namespace Todo.Web.GraphQL.TodoItems
     {
         [UseApplicationDbContext]
         [UsePaging(typeof(NonNullType<TodoItemType>))]
+        [UseProjection]
         [UseFiltering]
         [UseSorting]
         public IQueryable<TodoItem> GetTodoItems([ScopedService] ApplicationDbContext context) =>
