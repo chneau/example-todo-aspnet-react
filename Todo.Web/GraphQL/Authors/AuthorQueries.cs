@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using HotChocolate;
+using HotChocolate.Data;
 using HotChocolate.Types;
 using HotChocolate.Types.Relay;
 using Microsoft.EntityFrameworkCore;
@@ -15,8 +17,10 @@ namespace Todo.Web.GraphQL.Authors
     public class AuthorQueries
     {
         [UseApplicationDbContext]
-        public Task<List<Author>> GetAuthors([ScopedService] ApplicationDbContext context) =>
-            context.Authors.ToListAsync();
+        [UseFiltering]
+        [UseSorting]
+        public IQueryable<Author> GetAuthors([ScopedService] ApplicationDbContext context) =>
+            context.Authors;
 
         public Task<Author> GetAuthorAsync([ID(nameof(Author))] Guid id, AuthorByIdDataLoader dataLoader, CancellationToken cancellationToken) =>
             dataLoader.LoadAsync(id, cancellationToken);

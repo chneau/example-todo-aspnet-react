@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using HotChocolate;
+using HotChocolate.Data;
 using HotChocolate.Types;
 using HotChocolate.Types.Relay;
 using Microsoft.EntityFrameworkCore;
@@ -15,8 +17,10 @@ namespace Todo.Web.GraphQL.Books
     public class BookQueries
     {
         [UseApplicationDbContext]
-        public Task<List<Book>> GetBooks([ScopedService] ApplicationDbContext context) =>
-            context.Books.ToListAsync();
+        [UseFiltering]
+        [UseSorting]
+        public IQueryable<Book> GetBooks([ScopedService] ApplicationDbContext context) =>
+            context.Books;
 
         public Task<Book> GetBookAsync([ID(nameof(Book))] Guid id, BookByIdDataLoader dataLoader, CancellationToken cancellationToken) =>
             dataLoader.LoadAsync(id, cancellationToken);
