@@ -12,10 +12,10 @@ namespace Todo.Web.GraphQL.TodoItems
     {
         [Subscribe]
         [Topic]
-        public Task<TodoItem> OnTodoItemScheduledAsync(
+        public Task<TodoItem> OnTodoItemAsync(
             [EventMessage] Guid id,
-            TodoItemByIdDataLoader sessionById,
+            TodoItemByIdDataLoader todoItemById,
             CancellationToken cancellationToken) =>
-            sessionById.LoadAsync(id, cancellationToken);
+            todoItemById.LoadAsync(id, cancellationToken);
     }
 }
