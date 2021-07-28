@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "vite",
-    "dev": "vite",
+    "start": "vite --clearScreen=false --logLevel=info",
+    "dev:aspnet": "echo Starting the development server && vite --port=3000 --strictPort",
     "build": "tsc && vite build",
     "serve": "vite preview"
   },

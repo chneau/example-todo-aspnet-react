@@ -1,5 +1,7 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -86,7 +88,16 @@ namespace Todo.Web
                 endpoints.MapControllerRoute(name: "default", pattern: "{controller}/{action=Index}/{id?}");
             });
 
-            if (env.IsDevelopment()) { app.UseSpa(spa => spa.UseProxyToSpaDevelopmentServer("http://localhost:3000")); }
+            if (env.IsDevelopment())
+            {
+                app.UseSpa(spa =>
+                {
+                    spa.Options.SourcePath = "ClientApp";
+                    spa.Options.DevServerPort = 3000;
+                    spa.Options.StartupTimeout = TimeSpan.FromSeconds(1);
+                    spa.UseReactDevelopmentServer(npmScript: "dev:aspnet");
+                });
+            }
         }
     }
 }
