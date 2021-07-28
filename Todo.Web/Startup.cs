@@ -92,6 +92,7 @@ namespace Todo.Web
             {
                 app.UseSpa(spa =>
                 {
+                    // https://github.com/dotnet/aspnetcore/blob/main/src/Middleware/Spa/SpaServices.Extensions/src/ReactDevelopmentServer/ReactDevelopmentServerMiddleware.cs
                     spa.Options.SourcePath = "ClientApp";
                     spa.Options.DevServerPort = 3000;
                     spa.Options.StartupTimeout = TimeSpan.FromSeconds(1);
