@@ -73,7 +73,6 @@ namespace Todo.Web
             {
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
-                app.UseHttpsRedirection();
             }
 
             app.UseStaticFiles();
