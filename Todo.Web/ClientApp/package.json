@@ -5,7 +5,7 @@
   "scripts": {
     "start": "vite --clearScreen=false --logLevel=info",
     "dev:aspnet": "echo Starting the development server && vite --config=vite-aspnet.config.ts",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --outDir=build",
     "serve": "vite preview"
   },
   "dependencies": {
