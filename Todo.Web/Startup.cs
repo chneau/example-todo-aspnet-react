@@ -87,19 +87,20 @@ namespace Todo.Web
                 endpoints.MapControllerRoute(name: "default", pattern: "{controller}/{action=Index}/{id?}");
             });
 
-            if (env.IsDevelopment())
+            app.UseSpa(spa =>
             {
-                app.UseSpa(spa =>
+                spa.Options.SourcePath = "ClientApp";
+
+                if (env.IsDevelopment())
                 {
                     // https://github.com/dotnet/aspnetcore/blob/main/src/Middleware/Spa/SpaServices.Extensions/src/ReactDevelopmentServer/ReactDevelopmentServerMiddleware.cs
                     // TODO-Charles: Use env var to specify the graphQL endpoint
                     // 1. https://create-react-app.dev/docs/adding-custom-environment-variables/
-                    spa.Options.SourcePath = "ClientApp";
                     spa.Options.DevServerPort = 3000;
                     spa.Options.StartupTimeout = TimeSpan.FromSeconds(1);
                     spa.UseReactDevelopmentServer(npmScript: "dev:aspnet");
-                });
-            }
+                }
+            });
         }
     }
 }
