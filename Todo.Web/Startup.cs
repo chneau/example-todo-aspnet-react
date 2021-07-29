@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -7,7 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Todo.Web.Data;
-using Todo.Web.GraphQL;
 using Todo.Web.GraphQL.Authors;
 using Todo.Web.GraphQL.Books;
 using Todo.Web.GraphQL.GraphQL.Extensions;
@@ -68,18 +68,14 @@ namespace Todo.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) { app.UseDeveloperExceptionPage(); }
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+                app.UseHttpsRedirection();
             }
 
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
@@ -92,15 +88,19 @@ namespace Todo.Web
                 endpoints.MapControllerRoute(name: "default", pattern: "{controller}/{action=Index}/{id?}");
             });
 
-            app.UseSpa(spa =>
+            if (env.IsDevelopment())
             {
-                spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
+                app.UseSpa(spa =>
                 {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
-                }
-            });
+                    // https://github.com/dotnet/aspnetcore/blob/main/src/Middleware/Spa/SpaServices.Extensions/src/ReactDevelopmentServer/ReactDevelopmentServerMiddleware.cs
+                    // TODO-Charles: Use env var to specify the graphQL endpoint
+                    // 1. https://create-react-app.dev/docs/adding-custom-environment-variables/
+                    spa.Options.SourcePath = "ClientApp";
+                    spa.Options.DevServerPort = 3000;
+                    spa.Options.StartupTimeout = TimeSpan.FromSeconds(1);
+                    spa.UseReactDevelopmentServer(npmScript: "dev:aspnet");
+                });
+            }
         }
     }
 }
