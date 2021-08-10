@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Header } from "./components/Header";
 import "./index.css";
 import { HomePage } from "./pages/HomePage";
+import { LoginPage } from "./pages/LoginPage";
 import { TestingPage } from "./pages/TestingPage";
 
 // Log any GraphQL errors or network error that occurred
@@ -32,6 +33,7 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/testing" component={TestingPage} />
+          <Route exact path="/login" component={LoginPage} />
         </Switch>
       </ApolloProvider>
     </BrowserRouter>

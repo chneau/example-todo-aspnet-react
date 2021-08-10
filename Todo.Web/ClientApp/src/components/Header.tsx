@@ -21,6 +21,9 @@ export const Header = () => {
           <NavLink to="/testing" {...commonProps}>
             Testing
           </NavLink>
+          <NavLink to="/login" {...commonProps}>
+            Login
+          </NavLink>
         </Nav>
       </Navbar.Collapse>
     </HeaderNavbar>
