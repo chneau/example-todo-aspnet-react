@@ -21,12 +21,6 @@ export const Header = () => {
           <NavLink to="/testing" {...commonProps}>
             Testing
           </NavLink>
-          <NavLink to="/iframe/graphql" {...commonProps}>
-            GraphQL
-          </NavLink>
-          <NavLink to="/iframe/profiler" {...commonProps}>
-            MiniProfiler
-          </NavLink>
         </Nav>
       </Navbar.Collapse>
     </HeaderNavbar>
