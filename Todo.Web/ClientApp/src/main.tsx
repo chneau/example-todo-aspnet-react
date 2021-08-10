@@ -17,9 +17,13 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
+const httpLink = new HttpLink({
+  uri: import.meta.env.VITE_GRAPHQL_URL ?? "https://localhost:5001/graphql",
+});
+
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: from([errorLink, new HttpLink({ uri: "/graphql" })]),
+  link: from([errorLink, httpLink]),
 });
 
 ReactDOM.render(

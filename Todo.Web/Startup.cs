@@ -68,7 +68,11 @@ namespace Todo.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment()) { app.UseDeveloperExceptionPage(); }
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+            }
             else
             {
                 app.UseExceptionHandler("/Error");
@@ -76,7 +80,6 @@ namespace Todo.Web
             }
 
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
 
             app.UseRouting();
             app.UseMiniProfiler();
@@ -87,20 +90,26 @@ namespace Todo.Web
                 endpoints.MapControllerRoute(name: "default", pattern: "{controller}/{action=Index}/{id?}");
             });
 
-            app.UseSpa(spa =>
+            var spaEnabled = Configuration.GetValue<bool>("SpaEnabled");
+            Console.WriteLine($"spaEnabled: {spaEnabled}");
+            if (spaEnabled)
             {
-                spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
+                app.UseSpaStaticFiles();
+                app.UseSpa(spa =>
                 {
-                    // https://github.com/dotnet/aspnetcore/blob/main/src/Middleware/Spa/SpaServices.Extensions/src/ReactDevelopmentServer/ReactDevelopmentServerMiddleware.cs
-                    // TODO-Charles: Use env var to specify the graphQL endpoint
-                    // 1. https://create-react-app.dev/docs/adding-custom-environment-variables/
-                    spa.Options.DevServerPort = 3000;
-                    spa.Options.StartupTimeout = TimeSpan.FromSeconds(1);
-                    spa.UseReactDevelopmentServer(npmScript: "dev:aspnet");
-                }
-            });
+                    spa.Options.SourcePath = "ClientApp";
+
+                    if (env.IsDevelopment())
+                    {
+                        // https://github.com/dotnet/aspnetcore/blob/main/src/Middleware/Spa/SpaServices.Extensions/src/ReactDevelopmentServer/ReactDevelopmentServerMiddleware.cs
+                        // TODO-Charles: Use env var to specify the graphQL endpoint
+                        // 1. https://create-react-app.dev/docs/adding-custom-environment-variables/
+                        spa.Options.DevServerPort = 3000;
+                        spa.Options.StartupTimeout = TimeSpan.FromSeconds(1);
+                        spa.UseReactDevelopmentServer(npmScript: "dev:aspnet");
+                    }
+                });
+            }
         }
     }
 }

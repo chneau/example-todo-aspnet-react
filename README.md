@@ -16,6 +16,18 @@ https://demo.porridgewithprotein.xyz/
 - Getting graphql clientside (~React) right https://www.apollographql.com/docs/react/get-started/
 - Real time react https://www.howtographql.com/react-apollo/8-subscriptions/
 
+## dev setup
+
+```bash
+# run with C# proxy
+dotnet watch -p Todo.Web run
+
+# run without C# proxy
+SPAENABLED="false" dotnet watch -p Todo.Web run
+# and
+npm start --prefix Todo.Web/ClientApp
+```
+
 ## dev logs graphql part 3
 
 ```bash
