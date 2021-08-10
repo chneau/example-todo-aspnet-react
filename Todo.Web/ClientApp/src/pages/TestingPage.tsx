@@ -1,5 +1,4 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
-import faker from "faker";
 import React from "react";
 import { Button, Table } from "react-bootstrap";
 
@@ -39,7 +38,7 @@ export const TestingPage = () => {
   `);
 
   const addRandomTodoAndFetchMore = async () => {
-    await addRandomTodo({ variables: { description: faker.lorem.words(5) } });
+    await addRandomTodo({ variables: { description: `${Math.random()}` } });
     await refetch();
   };
 

@@ -10,7 +10,6 @@ import { GraphQLPage } from "./pages/GraphQLPage";
 import { HomePage } from "./pages/HomePage";
 import { ProfilerPage } from "./pages/ProfilerPage";
 import { TestingPage } from "./pages/TestingPage";
-import { reportWebVitals } from "./reportWebVitals";
 
 // Log any GraphQL errors or network error that occurred
 const errorLink = onError(({ graphQLErrors, networkError }) => {
@@ -39,8 +38,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals(console.log);
