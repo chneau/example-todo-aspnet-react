@@ -11,5 +11,7 @@ namespace Todo.Web.Data
         public DbSet<Author> Authors { get; set; } = default!;
 
         public DbSet<Book> Books { get; set; } = default!;
+
+        public DbSet<User> Users { get; set; } = default!;
     }
 }
